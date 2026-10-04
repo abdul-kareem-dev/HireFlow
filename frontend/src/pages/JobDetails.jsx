@@ -10,7 +10,7 @@ function JobDetails() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8085/api/jobs/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Job not found");

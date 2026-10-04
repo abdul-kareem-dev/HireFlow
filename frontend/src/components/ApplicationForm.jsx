@@ -20,7 +20,7 @@ function ApplicationForm({ job, onApplicationSubmitted }) {
         try {
 
             const response = await fetch(
-                `http://localhost:8085/api/applications/job/${job.id}`,
+                `${import.meta.env.VITE_API_URL}/api/applications/job/${job.id}`,
                 {
                     method: "POST",
                     headers: {
@@ -28,7 +28,7 @@ function ApplicationForm({ job, onApplicationSubmitted }) {
                     },
                     body: JSON.stringify(application)
                 }
-            );
+            )
 
             const data = await response.json();
 

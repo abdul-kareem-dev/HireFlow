@@ -9,7 +9,7 @@ function Applications() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8085/api/applications/user/${email}`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`)
             .then(response => response.json())
             .then(data => {
                 setApplications(data);

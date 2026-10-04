@@ -12,7 +12,7 @@ function Home() {
 
     useEffect(() => {
 
-        fetch("http://localhost:8085/api/jobs")
+        fetch(`${import.meta.env.VITE_API_URL}/api/jobs`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch jobs");

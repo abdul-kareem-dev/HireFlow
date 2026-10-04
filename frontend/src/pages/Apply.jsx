@@ -11,7 +11,7 @@ function Apply() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8085/api/jobs/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`)
             .then(response => response.json())
             .then(data => setJob(data))
             .catch(error =>
