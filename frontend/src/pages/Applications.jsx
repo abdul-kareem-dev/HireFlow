@@ -9,8 +9,17 @@ function Applications() {
 
     useEffect(() => {
 
-        fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`)
-            .then(response => response.json())
+        fetch(
+            `${import.meta.env.VITE_API_URL}/api/applications/user/${email}`
+        )
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch applications");
+                }
+
+                return response.json();
+            })
             .then(data => {
                 setApplications(data);
                 setLoading(false);
@@ -27,7 +36,7 @@ function Applications() {
     }
 
     return (
-        <div>
+        <div className="page">
 
             <h1>My Applications</h1>
 
@@ -36,7 +45,10 @@ function Applications() {
             ) : (
 
                 applications.map(application => (
-                    <div className="application-item" key={application.id}>
+                    <div
+                        className="application-item"
+                        key={application.id}
+                    >
 
                         <h2>{application.job.title}</h2>
 
@@ -52,14 +64,18 @@ function Applications() {
 
                         <p>
                             <strong>Status:</strong>{" "}
-                            <span className={`status-badge ${application.status.toLowerCase()}`}>
+                            <span
+                                className={`status-badge ${application.status.toLowerCase()}`}
+                            >
                                 {application.status.replace("_", " ")}
                             </span>
                         </p>
 
                         <p>
                             <strong>Applied:</strong>{" "}
-                            {new Date(application.appliedAt).toLocaleString()}
+                            {new Date(
+                                application.appliedAt
+                            ).toLocaleString()}
                         </p>
 
                     </div>
