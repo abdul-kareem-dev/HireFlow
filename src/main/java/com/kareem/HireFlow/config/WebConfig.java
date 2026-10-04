@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addMapping("/api/**")
                 .allowedOrigins("http://localhost:5173",
-                "https://hireflow-6ju6.onrender.com/")
+                "https://hireflow-6ju6.onrender.com")
                 .allowedMethods(
                         "GET",
                         "POST",
